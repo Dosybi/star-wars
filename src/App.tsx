@@ -1,7 +1,7 @@
 import { Routes, Route } from 'react-router-dom'
 
-import Characters from '@/components/pages/Characters'
-import Person from '@/components/pages/Person'
+import Characters from '@/pages/Characters'
+import Person from '@/pages/Person'
 
 function App() {
   return (
