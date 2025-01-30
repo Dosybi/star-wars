@@ -19,10 +19,12 @@ import { Input } from './ui/input'
 import ErrorMessage from './ErrorMessage'
 import { useScrollToTop } from '@/hooks/useScrollToTop'
 import { useDebounce } from '@/hooks/useDebounce'
+import { useQueryClient } from '@tanstack/react-query'
 
 const NUMBER_OF_PEOPLE_PER_PAGE = 10
 
 const PersonList: FC = () => {
+  const queryClient = useQueryClient()
   const navigate = useNavigate()
   const [searchParams, setSearchParams] = useSearchParams()
   const pageParam = parseInt(searchParams.get('page') || '1', 10)
@@ -61,6 +63,10 @@ const PersonList: FC = () => {
     const sp = searchParams.get('search') || ''
     setSearchQuery(sp)
   }, [searchParams])
+
+  useEffect(() => {
+    queryClient.invalidateQueries({ queryKey: ['people'] })
+  }, [])
 
   if (isError) {
     return <ErrorMessage message={error?.message || 'Something went wrong'} />

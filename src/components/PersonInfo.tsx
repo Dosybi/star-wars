@@ -27,16 +27,7 @@ const PersonInfo: FC<PersonInfoProps> = ({ data }) => {
       localStorage.setItem(getStorageKey(personId), JSON.stringify(person))
 
       queryClient.setQueryData(['person', personId], person)
-      queryClient.setQueryData(['people'], (oldData: { results: Person[] }) => {
-        if (!oldData) return oldData
-
-        return {
-          ...oldData,
-          results: oldData.results.map((p: Person) =>
-            extractId(p.url) === personId ? person : p,
-          ),
-        }
-      })
+      queryClient.invalidateQueries({ queryKey: ['people'] })
     }
   }
 
