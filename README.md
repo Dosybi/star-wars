@@ -26,10 +26,10 @@
 
 1. Клонируем репозиторий
 
-   ```bash
-   git clone https://github.com/Dosybi/star-wars.git
-   cd star-wars
-   ```
+```bash
+git clone https://github.com/Dosybi/star-wars.git
+cd star-wars
+```
 
 2. Устанавливаем зависимости
 
@@ -43,6 +43,6 @@ npm install
 npm run dev
 ```
 
-Откройте [http://localhost:5173](http://localhost:5173) в браузере.
+4. Открываем [http://localhost:5173](http://localhost:5173) в браузере.
 
 🚀 **May the Force be with you!** 🚀
