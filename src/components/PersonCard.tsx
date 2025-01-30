@@ -5,12 +5,17 @@ import { Avatar, AvatarFallback } from './ui/avatar'
 
 import type { Person } from '@/types/people'
 import { Button } from './ui/button'
+import { useNavigate } from 'react-router-dom'
+import { extractId } from '@/lib/utils'
 
 interface PersonCardProps {
   person: Person
 }
 
 const PersonCard: FC<PersonCardProps> = ({ person }) => {
+  const navigate = useNavigate()
+  const id = extractId(person.url)
+
   return (
     <Card className="hover:bg-gray-100/75 transition-colors duration-500 group border-none">
       <CardHeader className="flex flex-row items-center gap-2.5">
@@ -27,7 +32,11 @@ const PersonCard: FC<PersonCardProps> = ({ person }) => {
         <p>Hair Color: {person.hair_color}</p>
         <p>Eye Color: {person.eye_color}</p>
         <p>Skin Color: {person.skin_color}</p>
-        <Button className="block md:hidden my-4" variant="outline">
+        <Button
+          className="block md:hidden my-4"
+          variant="outline"
+          onClick={() => navigate(`/people/${id}`)}
+        >
           More
         </Button>
       </CardContent>
