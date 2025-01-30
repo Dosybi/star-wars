@@ -1,6 +1,6 @@
 import { type FC } from 'react'
 import type { Film } from '@/types/film'
-import { Skeleton } from './ui/skeleton'
+import TextSkeleton from './TextSkeleton'
 
 interface PersonFilmsProps {
   films: Film[]
@@ -8,15 +8,7 @@ interface PersonFilmsProps {
 }
 
 const PersonFilms: FC<PersonFilmsProps> = ({ films, isFetching }) => {
-  if (isFetching) {
-    return (
-      <>
-        <Skeleton className="w-full h-4 mb-2" />
-        <Skeleton className="w-full h-4 mb-2" />
-        <Skeleton className="w-full h-4 mb-2" />
-      </>
-    )
-  }
+  if (isFetching) return <TextSkeleton />
 
   return films?.map((film) => (
     <div className="mb-4" key={film.title}>

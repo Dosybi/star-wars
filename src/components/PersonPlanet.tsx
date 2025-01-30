@@ -1,6 +1,6 @@
 import { type FC } from 'react'
 import type { Planet } from '@/types/planet'
-import { Skeleton } from './ui/skeleton'
+import TextSkeleton from './TextSkeleton'
 
 interface PersonPlanetProps {
   planet: Planet
@@ -20,15 +20,7 @@ const PersonPlanet: FC<PersonPlanetProps> = ({ planet, isFetching }) => {
     population,
   } = planet
 
-  if (isFetching) {
-    return (
-      <>
-        <Skeleton className="w-full h-4 mb-2" />
-        <Skeleton className="w-full h-4 mb-2" />
-        <Skeleton className="w-full h-4 mb-2" />
-      </>
-    )
-  }
+  if (isFetching) return <TextSkeleton />
 
   return (
     <>
