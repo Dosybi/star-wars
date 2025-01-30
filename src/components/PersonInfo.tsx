@@ -148,7 +148,7 @@ const PersonInfo: FC<PersonInfoProps> = ({ data }) => {
           <p>Skin Color: {person.skin_color}</p>
         )}
       </div>
-      <div className="flex gap-4">
+      <div className="flex flex-wrap gap-4">
         <Button variant="outline" onClick={handleEdit} disabled={isEditing}>
           Edit
         </Button>
