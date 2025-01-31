@@ -7,6 +7,7 @@ import type { Person } from '@/types/people'
 import { Button } from './ui/button'
 import { useNavigate } from 'react-router-dom'
 import { extractId } from '@/lib/utils'
+import { ROUTES } from '@/routes'
 
 interface PersonCardProps {
   person: Person
@@ -35,7 +36,7 @@ const PersonCard: FC<PersonCardProps> = ({ person }) => {
         <Button
           className="block md:hidden my-4"
           variant="outline"
-          onClick={() => navigate(`/people/${id}`)}
+          onClick={() => navigate(ROUTES.PERSON(id))}
         >
           More
         </Button>

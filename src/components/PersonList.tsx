@@ -20,6 +20,7 @@ import ErrorMessage from './ErrorMessage'
 import { useScrollToTop } from '@/hooks/useScrollToTop'
 import { useDebounce } from '@/hooks/useDebounce'
 import { useQueryClient } from '@tanstack/react-query'
+import { ROUTES } from '@/routes'
 
 const NUMBER_OF_PEOPLE_PER_PAGE = 10
 
@@ -50,7 +51,7 @@ const PersonList: FC = () => {
 
   const handleCardClick = (person: Person) => {
     const id = extractId(person.url)
-    navigate(`/people/${id}`)
+    navigate(ROUTES.PERSON(id))
   }
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
